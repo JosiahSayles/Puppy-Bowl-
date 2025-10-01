@@ -60,13 +60,12 @@ async function removePlayer(id) {
     const res = await fetch(`${API}/${id}`, {
       method: "DELETE",
     });
-    console.log(res);
     if (res.status === 204) {
       selectedPlayer = null;
       await getPlayers();
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -131,13 +130,13 @@ function NewPlayerForm() {
     <label>
      Status
       <select name="status">
-         <option value="Field">Field</option>
+         <option value="field">Field</option>
          <option value="Bench">Bench</option>
       </select>
     </label>
     <label>
     ImageUrl 
-    <input  name="imageUrl" required
+    <input  name="imageUrl" required>
     </label>
     <button >Add Player</button>
     `;
