@@ -21,6 +21,7 @@ async function getPlayers() {
     const res = await fetch(API);
     const result = await res.json();
     players = result.data.players;
+    render();
   } catch (err) {
     console.log(err);
   }
@@ -47,7 +48,7 @@ async function addPlayer(player) {
 
     const json = await res.json();
     if (json.success) {
-      getPlayer();
+      await getPlayers();
     }
   } catch (err) {
     console.log(err);
@@ -56,21 +57,24 @@ async function addPlayer(player) {
 
 async function removePlayer(id) {
   try {
-    const res = await fetch(`${API}/ ${id}`, {
+    const res = await fetch(`${API}/${id}`, {
       method: "DELETE",
     });
     console.log(res);
     if (res.status === 204) {
       selectedPlayer = null;
-      getPlayers();
+      await getPlayers();
     }
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function PlayerListItem(player) {
   const li = document.createElement("li");
   li.innerHTML = `
-    <a href="#selected">${player.name}</a>
+    <a href="#selected"> <img alt="${player.name}" src="${player.imageUrl}" width=15%/> ${player.name}</a>
+  
     `;
   li.addEventListener("click", () => getPlayer(player.id));
   return li;
@@ -126,7 +130,7 @@ function NewPlayerForm() {
     </label>
     <label>
      Status
-      <select id="myDropdown" name="selectedOption">
+      <select name="status">
          <option value="field">Field</option>
          <option value="Bench">Bench</option>
       </select>
@@ -176,6 +180,7 @@ function render() {
 
 async function init() {
   await getPlayers();
+
   render();
 }
 
