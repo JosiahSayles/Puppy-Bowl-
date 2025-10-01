@@ -17,6 +17,10 @@ main {
 section {
   padding: 0 1rem;
 }
+section p {
+  font-size: 2rem;
+  padding: 1ch;
+}
 
 .lineup {
   list-style: none;
@@ -34,6 +38,7 @@ section {
   border: 1px solid #eee;
   border-radius: 0.5rem;
   padding: 1ch;
+  font-size: 2rem;
 }
 
 .lineup a:hover {
@@ -65,4 +70,8 @@ form {
 
 label {
   display: grid;
+}
+
+button {
+  font-size: 1.5rem;
 }

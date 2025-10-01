@@ -131,7 +131,7 @@ function NewPlayerForm() {
     <label>
      Status
       <select name="status">
-         <option value="field">Field</option>
+         <option value="Field">Field</option>
          <option value="Bench">Bench</option>
       </select>
     </label>
@@ -139,7 +139,7 @@ function NewPlayerForm() {
     ImageUrl 
     <input  name="imageUrl" required
     </label>
-    <button>Add Player</button>
+    <button >Add Player</button>
     `;
 
   form.addEventListener("submit", function (e) {
